@@ -6,13 +6,13 @@
 <title>Pretty Rich Wise | Official Portfolio</title>
 <style>
 :root {
---bg-color: #0b0b0b;
---card-bg: #141414;
---neon-pink: #ff2a85;
+--bg-color: #060608;
+--card-bg: #111115;
+--neon-pink: #ff007f;
 --neon-blue: #00f0ff;
---text-main: #f0f0f0;
---text-muted: #aaaaaa;
---border-color: #222222;
+--text-main: #ffffff;
+--text-muted: #b0b0b5;
+--border-color: #252530;
 }
 
 * {
@@ -29,135 +29,219 @@ line-height: 1.6;
 overflow-x: hidden;
 }
 
-/* Header & Navigation */
+/* Header & Logo */
 header {
-background: rgba(11, 11, 11, 0.95);
-border-bottom: 1px solid var(--border-color);
-position: sticky;
-top: 0;
-z-index: 1000;
-padding: 1.5rem 2rem;
+background: rgba(6, 6, 8, 0.95);
+border-bottom: 2px solid var(--border-color);
+padding: 2.5rem 2rem;
 text-align: center;
+backdrop-filter: blur(10px);
 }
 
 .logo {
 font-family: "Brush Script MT", cursive, sans-serif;
-font-size: 2.5rem;
+font-size: 3.8rem;
 color: var(--neon-pink);
-text-shadow: 0 0 10px rgba(255, 42, 133, 0.5), 0 0 20px rgba(255, 42, 133, 0.3);
-margin-bottom: 0.5rem;
+text-shadow: 0 0 15px rgba(255, 0, 127, 0.6), 0 0 30px rgba(255, 0, 127, 0.3);
 letter-spacing: 2px;
+margin-bottom: 0.5rem;
 }
 
-nav {
-display: flex;
-justify-content: center;
-gap: 2rem;
-flex-wrap: wrap;
-}
-
-.tab-btn {
-background: transparent;
-border: none;
+.tagline {
 color: var(--text-muted);
-font-size: 1rem;
-font-weight: 700;
-cursor: pointer;
 text-transform: uppercase;
-letter-spacing: 1px;
-transition: color 0.3s ease, text-shadow 0.3s ease;
-padding: 0.5rem 1rem;
-}
-
-.tab-btn:hover, .tab-btn.active {
-color: var(--neon-blue);
-text-shadow: 0 0 8px rgba(0, 240, 255, 0.6);
+letter-spacing: 3px;
+font-size: 0.9rem;
 }
 
 /* Main Container */
 .container {
 max-width: 1400px;
-margin: 2rem auto;
-padding: 0 1.5rem;
+margin: 3rem auto;
+padding: 0 2rem;
 }
 
-.section-view {
+/* Split Screen / Dual Side Hub */
+.split-hub {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 3rem;
+margin-bottom: 3rem;
+}
+
+@media (max-width: 900px) {
+.split-hub {
+grid-template-columns: 1fr;
+}
+}
+
+.side-card {
+background-color: var(--card-bg);
+border: 2px solid var(--border-color);
+border-radius: 12px;
+padding: 4rem 2.5rem;
+text-align: center;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+
+.side-card h2 {
+font-size: 2.4rem;
+margin-bottom: 1rem;
+text-transform: uppercase;
+letter-spacing: 2px;
+}
+
+.side-card.acting-side h2 {
+color: var(--neon-blue);
+text-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
+}
+
+.side-card.wrestling-side h2 {
+color: var(--neon-pink);
+text-shadow: 0 0 10px rgba(255, 0, 127, 0.4);
+}
+
+.side-card p {
+color: var(--text-muted);
+margin-bottom: 2.5rem;
+font-size: 1.05rem;
+}
+
+/* Interactive Hover Effect */
+.side-card:hover {
+transform: translateY(-5px);
+}
+
+.side-card.acting-side:hover {
+border-color: var(--neon-blue);
+box-shadow: 0 0 30px rgba(0, 240, 255, 0.25);
+}
+
+.side-card.wrestling-side:hover {
+border-color: var(--neon-pink);
+box-shadow: 0 0 30px rgba(255, 0, 127, 0.25);
+}
+
+.explore-btn {
+background: transparent;
+border: 2px solid currentColor;
+color: inherit;
+padding: 1rem 2.5rem;
+font-weight: 800;
+text-transform: uppercase;
+letter-spacing: 1.5px;
+border-radius: 4px;
+transition: all 0.3s ease;
+}
+
+.side-card.acting-side .explore-btn {
+color: var(--neon-blue);
+}
+
+.side-card.wrestling-side .explore-btn {
+color: var(--neon-pink);
+}
+
+.side-card:hover .explore-btn {
+background: currentColor;
+color: #060608;
+box-shadow: 0 0 15px currentColor;
+}
+
+/* Detailed Content Views (Toggled) */
+.content-section {
 display: none;
+background-color: var(--card-bg);
+border: 1px solid var(--border-color);
+border-radius: 12px;
+padding: 2.5rem;
+margin-top: 2rem;
 }
 
-.section-view.active {
+.content-section.active {
 display: block;
 }
 
-h2 {
+.back-btn {
+background: transparent;
+border: 1px solid var(--border-color);
+color: var(--text-muted);
+padding: 0.6rem 1.2rem;
+font-weight: 700;
+text-transform: uppercase;
+cursor: pointer;
+border-radius: 4px;
+margin-bottom: 2rem;
+transition: all 0.2s ease;
+}
+
+.back-btn:hover {
+color: var(--text-main);
+border-color: var(--text-main);
+}
+
+.section-title {
 color: var(--neon-blue);
-font-size: 1.8rem;
+font-size: 1.6rem;
 margin-bottom: 1.5rem;
 text-transform: uppercase;
-letter-spacing: 1px;
+letter-spacing: 1.5px;
 border-bottom: 2px solid var(--border-color);
 padding-bottom: 0.5rem;
 }
 
-/* Grid Layouts */
 .grid-2col {
 display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 2rem;
+grid-template-columns: 1.1fr 0.9fr;
+gap: 2.5rem;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
 .grid-2col {
 grid-template-columns: 1fr;
 }
 }
 
-.card {
-background-color: var(--card-bg);
-border: 1px solid var(--border-color);
-border-radius: 8px;
-padding: 2rem;
-margin-bottom: 2rem;
-}
-
-/* Filmography List */
-.filmography-list {
+/* Filmography & Lists */
+.item-list {
 list-style: none;
-max-height: 600px;
+max-height: 550px;
 overflow-y: auto;
 padding-right: 0.5rem;
 }
 
-.filmography-list::-webkit-scrollbar {
+.item-list::-webkit-scrollbar {
 width: 6px;
 }
 
-.filmography-list::-webkit-scrollbar-thumb {
+.item-list::-webkit-scrollbar-thumb {
 background: var(--border-color);
 border-radius: 3px;
 }
 
-.filmography-item {
-padding: 0.75rem 0;
+.list-row {
+padding: 0.9rem 0;
 border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.filmography-item:last-child {
+.list-row:last-child {
 border-bottom: none;
 }
 
-.film-title {
-font-weight: bold;
+.row-title {
+font-weight: 700;
 color: var(--text-main);
-font-size: 1.1rem;
+font-size: 1.05rem;
 }
 
-.film-meta {
-font-size: 0.9rem;
+.row-meta {
+font-size: 0.85rem;
 color: var(--text-muted);
+margin-top: 0.2rem;
 }
 
-/* Media & Videos */
+/* Video Container */
 .video-container {
 position: relative;
 width: 100%;
@@ -166,8 +250,8 @@ height: 0;
 background: #000;
 border-radius: 6px;
 overflow: hidden;
-margin-bottom: 1.5rem;
 border: 1px solid var(--border-color);
+margin-bottom: 1.5rem;
 }
 
 .video-container iframe {
@@ -179,139 +263,148 @@ height: 100%;
 border: none;
 }
 
-/* Bio & Stats */
+/* Stats & Bio Boxes */
 .stats-box {
 display: flex;
 gap: 2rem;
 margin: 1rem 0;
-font-weight: bold;
+font-weight: 700;
 color: var(--neon-pink);
+font-size: 1.1rem;
 }
 
 .bio-text {
 color: var(--text-muted);
 margin-bottom: 1rem;
+font-size: 0.95rem;
 }
 
-.rep-info {
-background: rgba(0, 240, 255, 0.05);
+.rep-box {
+background: rgba(0, 240, 255, 0.03);
 border-left: 3px solid var(--neon-blue);
-padding: 1rem;
-margin-top: 1rem;
+padding: 1.2rem;
+margin-top: 1.5rem;
 border-radius: 0 6px 6px 0;
+border: 1px solid var(--border-color);
+border-left-width: 3px;
 }
 
-.rep-info p {
+.rep-box p {
 color: var(--text-main);
+font-size: 0.95rem;
+margin-bottom: 0.4rem;
 }
 
-/* Footer */
 footer {
 text-align: center;
-padding: 2rem;
+padding: 3rem;
 color: var(--text-muted);
 border-top: 1px solid var(--border-color);
 margin-top: 4rem;
-font-size: 0.9rem;
+font-size: 0.85rem;
+letter-spacing: 1px;
 }
 </style>
 </head>
 <body>
 
-<!-- Header & Navigation -->
+<!-- Header & Neon Logo -->
 <header>
 <div class="logo">Pretty Rich Wise</div>
-<nav>
-<button class="tab-btn active" onclick="switchTab('acting')">Acting Side</button>
-<button class="tab-btn" onclick="switchTab('wrestling')">Wrestling Side</button>
-</nav>
+<div class="tagline">Professional Actor & Independent Professional Wrestler</div>
 </header>
 
 <div class="container">
 
-<!-- ================= ACTING SIDE ================= -->
-<div id="acting-side" class="section-view active">
-<div class="grid-2col">
-<!-- Left Column: Featured Filmography -->
-<div class="card">
-<h2>Featured Filmography</h2>
-<ul class="filmography-list">
-<li class="filmography-item"><div class="film-title">JUST PICTURE IT</div><div class="film-meta">09/26/25 — Role: Background Role</div></li>
-<li class="filmography-item"><div class="film-title">DIARRA FROM DETROIT</div><div class="film-meta">10/08/25 — Role: Background Role</div></li>
-<li class="filmography-item"><div class="film-title">HEARTLAND</div><div class="film-meta">11/12/25 — Role: Background Role</div></li>
-<li class="filmography-item"><div class="film-title">RJ DECKER</div><div class="film-meta">12/02/25 — Role: Background Role</div></li>
-<li class="filmography-item"><div class="film-title">DAVINCI</div><div class="film-meta">12/09/25 — Role: Background Role</div></li>
-<li class="filmography-item"><div class="film-title">1% CLUB FOX ("The 1% Smack Down")</div><div class="film-meta">05/18/26 — Role: Contestant / Professional Wrestler</div></li>
-<li class="filmography-item"><div class="film-title">GOSPEL OF CHRISTMAS</div><div class="film-meta">01/30/26 — Role: Background Role</div></li>
-<li class="filmography-item"><div class="film-title">MTV UNTITLED</div><div class="film-meta">02/23/26 — Role: Background Role</div></li>
-<li class="filmography-item"><div class="film-title">THE ROCKFORD FILES</div><div class="film-meta">03/09/26 — Role: Background Role</div></li>
-<li class="filmography-item"><div class="film-title">UNDERTOW</div><div class="film-meta">03/16/26 — Role: Background Role</div></li>
-<li class="filmography-item"><div class="film-title">HAL</div><div class="film-meta">03/17/26 — Role: Background Role</div></li>
-<li class="filmography-item"><div class="film-title">SCARY MOVIE 6</div><div class="film-meta">03/24/26 — Role: Background Role</div></li>
-<li class="filmography-item"><div class="film-title">THUNDER ROAD</div><div class="film-meta">11/04/26 — Role: Background Role</div></li>
-<li class="filmography-item"><div class="film-title">TULSA KING</div><div class="film-meta">03/27/26 — Role: Background Role</div></li>
-<li class="filmography-item"><div class="film-title">FRISCO KING</div><div class="film-meta">04/09/26 — Role: Background Role</div></li>
-<li class="filmography-item"><div class="film-title">ZATIMA</div><div class="film-meta">05/04/26 — Role: Background Role</div></li>
-</ul>
+<!-- ================= DUAL SIDE LANDING HUB ================= -->
+<div id="hub-view" class="split-hub">
+<!-- Acting Side Card -->
+<div class="side-card acting-side" onclick="showSection('acting')">
+<h2>Acting Portfolio</h2>
+<p>Explore film & TV credits, acting reel, professional stats, and New York representation details.</p>
+<button class="explore-btn">Enter Acting Side</button>
 </div>
 
-<!-- Right Column: Media & Bio -->
+<!-- Wrestling Side Card -->
+<div class="side-card wrestling-side" onclick="showSection('wrestling')">
+<h2>Wrestling Career</h2>
+<p>Explore 200+ matches, major promotions (WWE, MLW, 1FW, CCW), training history, and notable opponents.</p>
+<button class="explore-btn">Enter Wrestling Side</button>
+</div>
+</div>
+
+<!-- ================= ACTING DETAILED VIEW ================= -->
+<div id="acting-content" class="content-section">
+<button class="back-btn" onclick="showHub()">&larr; Back to Main Hub</button>
+<div class="grid-2col">
 <div>
-<div class="card">
-<h2>Acting Reel</h2>
+<h3 class="section-title">Featured Filmography</h3>
+<ul class="item-list">
+<li class="list-row"><div class="row-title">JUST PICTURE IT</div><div class="row-meta">09/26/25 — Role: Background Role</div></li>
+<li class="list-row"><div class="row-title">DIARRA FROM DETROIT</div><div class="row-meta">10/08/25 — Role: Background Role</div></li>
+<li class="list-row"><div class="row-title">HEARTLAND</div><div class="row-meta">11/12/25 — Role: Background Role</div></li>
+<li class="list-row"><div class="row-title">RJ DECKER</div><div class="row-meta">12/02/25 — Role: Background Role</div></li>
+<li class="list-row"><div class="row-title">DAVINCI</div><div class="row-meta">12/09/25 — Role: Background Role</div></li>
+<li class="list-row"><div class="row-title">1% CLUB FOX ("The 1% Smack Down")</div><div class="row-meta">05/18/26 — Role: Contestant / Professional Wrestler</div></li>
+<li class="list-row"><div class="row-title">GOSPEL OF CHRISTMAS</div><div class="row-meta">01/30/26 — Role: Background Role</div></li>
+<li class="list-row"><div class="row-title">MTV UNTITLED</div><div class="row-meta">02/23/26 — Role: Background Role</div></li>
+<li class="list-row"><div class="row-title">THE ROCKFORD FILES</div><div class="row-meta">03/09/26 — Role: Background Role</div></li>
+<li class="list-row"><div class="row-title">UNDERTOW</div><div class="row-meta">03/16/26 — Role: Background Role</div></li>
+<li class="list-row"><div class="row-title">HAL</div><div class="row-meta">03/17/26 — Role: Background Role</div></li>
+<li class="list-row"><div class="row-title">SCARY MOVIE 6</div><div class="row-meta">03/24/26 — Role: Background Role</div></li>
+<li class="list-row"><div class="row-title">THUNDER ROAD</div><div class="row-meta">11/04/26 — Role: Background Role</div></li>
+<li class="list-row"><div class="row-title">TULSA KING</div><div class="row-meta">03/27/26 — Role: Background Role</div></li>
+<li class="list-row"><div class="row-title">FRISCO KING</div><div class="row-meta">04/09/26 — Role: Background Role</div></li>
+<li class="list-row"><div class="row-title">ZATIMA</div><div class="row-meta">05/04/26 — Role: Background Role</div></li>
+</ul>
+</div>
+<div>
+<h3 class="section-title">Acting Reel</h3>
 <div class="video-container">
 <iframe src="https://www.youtube.com/embed/FfOAVNTXdBU" title="Acting Reel" allowfullscreen></iframe>
 </div>
-</div>
-
-<div class="card">
-<h2>Biography & Representation</h2>
+<h3 class="section-title" style="margin-top: 2rem;">Biography & Representation</h3>
 <p class="bio-text">Professional actor and independent professional wrestler who began pursuing acting in September 2025. Known for an exceptionally disciplined approach to physical conditioning, heavy resistance training, and a ripped, screen-ready physique.</p>
 <div class="stats-box">
 <span>Height: 5'9"</span>
 <span>Weight: 170 lbs</span>
 </div>
-<div class="rep-info">
+<div class="rep-box">
 <p><strong>Representation:</strong> Bruce Kivo (Kivo Bernstein Talent Inc.) — New York</p>
 <p><strong>Booking & Inquiries:</strong> Contact via agency representation</p>
 </div>
 </div>
 </div>
 </div>
-</div>
 
-<!-- ================= WRESTLING SIDE ================= -->
-<div id="wrestling-side" class="section-view">
+<!-- ================= WRESTLING DETAILED VIEW ================= -->
+<div id="wrestling-content" class="content-section">
+<button class="back-btn" onclick="showHub()">&larr; Back to Main Hub</button>
 <div class="grid-2col">
-<!-- Left Column: Wrestling Profile & Notable Matches -->
-<div class="card">
-<h2>Wrestling Profile</h2>
+<div>
+<h3 class="section-title">Wrestling Profile & Stats</h3>
 <div class="stats-box">
 <span>Experience: 200+ Matches</span>
 <span>Height: 5'9" | 170 lbs</span>
 </div>
 <p class="bio-text">Graduate of the Wild Samoan Training Center under trainer Afa Anoa'i Sr. (Class of 2019). Known for explosive high-flying ability, execution of the top-rope *Freakensteiner*, and an intense, resistance-trained powerhouse physique.</p>
 
-<h2 style="margin-top: 2rem;">Notable Matches & Opponents</h2>
-<ul class="filmography-list" style="max-height: 300px;">
-<li class="filmography-item"><div class="film-title">Buff Bagwell</div><div class="film-meta">Shared the ring on the independent circuit</div></li>
-<li class="filmography-item"><div class="film-title">Enzo Amore (nZo)</div><div class="film-meta">Adrenaline Championship Wrestling - King of Maryland (2023)</div></li>
-<li class="filmography-item"><div class="film-title">Gangrel</div><div class="film-meta">Coastal Championship Wrestling (CCW)</div></li>
-<li class="filmography-item"><div class="film-title">The Good Brothers</div><div class="film-meta">Featured independent match appearances</div></li>
+<h3 class="section-title" style="margin-top: 2rem;">Notable Matches & Opponents</h3>
+<ul class="item-list" style="max-height: 280px;">
+<li class="list-row"><div class="row-title">Buff Bagwell</div><div class="row-meta">Shared the ring on the independent circuit</div></li>
+<li class="list-row"><div class="row-title">Enzo Amore (nZo)</div><div class="row-meta">Adrenaline Championship Wrestling - King of Maryland (2023)</div></li>
+<li class="list-row"><div class="row-title">Gangrel</div><div class="row-meta">Coastal Championship Wrestling (CCW)</div></li>
+<li class="list-row"><div class="row-title">The Good Brothers</div><div class="row-meta">Featured independent match appearances</div></li>
 </ul>
 </div>
-
-<!-- Right Column: Major Appearances & Promotions -->
 <div>
-<div class="card">
-<h2>Major Appearances & Promotions</h2>
-<ul class="filmography-list" style="max-height: 350px;">
-<li class="filmography-item"><div class="film-title">WWE</div><div class="film-meta">RAW Underground (Featured appearance vs. Titus O'Neil)</div></li>
-<li class="filmography-item"><div class="film-title">MLW (Major League Wrestling)</div><div class="film-meta">Television appearances as Azteca Henchman | Blood & Thunder '24 & War Chamber '24</div></li>
-<li class="filmography-item"><div class="film-title">1FW Wrestling</div><div class="film-meta">Independent Circuit Appearances</div></li>
-<li class="filmography-item"><div class="film-title">CCW & Viral Pro Wrestling</div><div class="film-meta">Active Regional Promotion Performances</div></li>
+<h3 class="section-title">Major Appearances & Promotions</h3>
+<ul class="item-list" style="max-height: 400px;">
+<li class="list-row"><div class="row-title">WWE</div><div class="row-meta">RAW Underground (Featured appearance vs. Titus O'Neil)</div></li>
+<li class="list-row"><div class="row-title">MLW (Major League Wrestling)</div><div class="row-meta">Television appearances as Azteca Henchman | Blood & Thunder '24 & War Chamber '24</div></li>
+<li class="list-row"><div class="row-title">1FW Wrestling</div><div class="row-meta">Independent Circuit Appearances</div></li>
+<li class="list-row"><div class="row-title">CCW & Viral Pro Wrestling</div><div class="row-meta">Active Regional Promotion Performances</div></li>
 </ul>
-</div>
 </div>
 </div>
 </div>
@@ -323,17 +416,23 @@ font-size: 0.9rem;
 </footer>
 
 <script>
-function switchTab(side) {
-document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-if(side === 'acting') {
-document.querySelectorAll('.tab-btn')[0].classList.add('active');
-document.getElementById('acting-side').classList.add('active');
-document.getElementById('wrestling-side').classList.remove('active');
+function showSection(side) {
+document.getElementById('hub-view').style.display = 'none';
+document.getElementById('acting-content').classList.remove('active');
+document.getElementById('wrestling-content').classList.remove('active');
+
+if (side === 'acting') {
+document.getElementById('acting-content').classList.add('active');
 } else {
-document.querySelectorAll('.tab-btn')[1].classList.add('active');
-document.getElementById('wrestling-side').classList.add('active');
-document.getElementById('acting-side').classList.remove('active');
+document.getElementById('wrestling-content').classList.add('active');
 }
+window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function showHub() {
+document.getElementById('acting-content').classList.remove('active');
+document.getElementById('wrestling-content').classList.remove('active');
+document.getElementById('hub-view').style.display = 'grid';
 window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 </script>
